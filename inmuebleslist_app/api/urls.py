@@ -1,10 +1,16 @@
 from django.urls import path
-# from inmuebleslist_app.api.views import inmueble_list, inmueble_detalle
-from inmuebleslist_app.api.views import InmuebleListApiview, InmuebleDetailApiView
+
+from inmuebleslist_app.api.views import (
+    EmpresaApiview,
+    EdificacionApiview,
+    EdificacionDetailApiView,
+    EmpresaDetalleApiview,
+)
+
 
 urlpatterns = [
-    # path('list/', inmueble_list, name='inmueble-list'),
-    # path('<int:pk>/', inmueble_detalle, name="inmueble-detalle")
-    path('list/', InmuebleListApiview.as_view(), name='inmueble-list'),
-    path('<int:pk>/', InmuebleDetailApiView.as_view(), name="inmueble-detalle")
+    path("list/", EdificacionApiview.as_view(), name="edificacion"),
+    path("<int:pk>/", EdificacionDetailApiView.as_view(), name="edificacion-detail"),
+    path("empresa/", EmpresaApiview.as_view(), name="empresa"),
+    path("empresa/<int:pk>/", EmpresaDetalleApiview.as_view(), name="empresa-detail"),
 ]
