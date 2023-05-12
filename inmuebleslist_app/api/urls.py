@@ -5,12 +5,28 @@ from inmuebleslist_app.api.views import (
     EdificacionApiview,
     EdificacionDetailApiView,
     EmpresaDetalleApiview,
+    ComentarioList,
+    ComentarioDetail,
 )
 
 
 urlpatterns = [
-    path("list/", EdificacionApiview.as_view(), name="edificacion"),
-    path("<int:pk>/", EdificacionDetailApiView.as_view(), name="edificacion-detail"),
+    path("edificacion/", EdificacionApiview.as_view(), name="edificacion"),
+    path(
+        "edificacion/<int:pk>/",
+        EdificacionDetailApiView.as_view(),
+        name="edificacion-detail",
+    ),
     path("empresa/", EmpresaApiview.as_view(), name="empresa"),
     path("empresa/<int:pk>/", EmpresaDetalleApiview.as_view(), name="empresa-detail"),
+    path(
+        "edificacion/<int:pk>/comentario/",
+        EdificacionDetailApiView.as_view(),
+        name="comentario-list",
+    ),
+    path(
+        "edificacion/comentario/<int:pk>/",
+        ComentarioDetail.as_view(),
+        name="comentario-detail",
+    ),
 ]
